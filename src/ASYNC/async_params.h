@@ -114,7 +114,8 @@ BEGIN_DETAILS_DICT(benchmarks_params, "component_details:")
     static void set_family_defaults(my_list &list, const std::string &family,
                                     const std::string &list_name) {
         (void)family;
-        if (list_name == "pt2pt" || list_name == "rma_pt2pt" || list_name == "na2a") {
+        if (list_name == "pt2pt" || list_name == "rma_pt2pt" || list_name == "rma_notify" ||
+            list_name == "na2a") {
             list.set_value_if_missing<std::string>("topology", "ping-pong");
         }
         if (list_name == "allreduce" || list_name == "alltoall") {

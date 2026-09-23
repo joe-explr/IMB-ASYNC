@@ -43,6 +43,11 @@ BENCHMARK_SUITE_SRC += ASYNC/async_pt2pt.cpp ASYNC/async_rma.cpp ASYNC/async_na2
 BENCHMARK_SUITE_SRC += ASYNC/async_allreduce.cpp ASYNC/async_alltoall.cpp 
 BENCHMARK_SUITE_SRC += ASYNC/async_workload.cpp 
 
+# Notified RMA (MPI 5.1) needs an MPI library that implements it
+ifeq ($(WITH_NOTIFY),TRUE)
+BENCHMARK_SUITE_SRC += ASYNC/async_rma_notify.cpp
+endif
+
 ifeq ($(WITH_CUDA),TRUE)
 override CPPFLAGS += -DWITH_CUDA
 override LDFLAGS += -lcuda
